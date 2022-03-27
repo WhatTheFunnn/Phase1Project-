@@ -18,14 +18,20 @@ function weatherLoad(){
         
         let dataField = document.getElementById("weatherinfo");
         dataField.append("Todays Date: ", newDate, " " ,)
-        dataField.append(" Time: ", hrsAndMins, )
+        dataField.append(" Time: ", hrsAndMins)
 
 
         let current = data.dataseries[0]
         let threeHour = data.dataseries[1]
         let cloudCover = threeHour.cloudcover
-        let currentTemp = current.temp2m
-        let threeHourTemp = (threeHour.temp2m * 9/5 + 32)
-        console.log(currentTemp)
+        let currentTemp = (current.temp2m * 9/5 + 32 + " F")
+        let threeHourTemp = (threeHour.temp2m * 9/5 + 32 + " F")
+
+        let container = document.getElementById("container")
+        let newPTage = document.createElement("p")
+        container.append(newPTage)   
+        newPTage.append(currentTemp)    
+        console.log(container)
     })
 }
+
