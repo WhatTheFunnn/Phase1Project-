@@ -27,14 +27,23 @@ function weatherInfo(){
         let year = date[0]
         let month = date[1]
         let day = date[2]
-        let time = data.currentConditions.datetime
+        let time = data.currentConditions.datetime.split(":")
+        let hour = (time[0] % 12) 
+        let minutes = time[1]
         let dateField = document.getElementById("dateinfo")
         let timeField = document.getElementById("timeinfo")
         dateField.append("Date: " + month + "-" + day + "-" + year, " ")
-        timeField.append("Time: ", time)
+            if (time > "11:59:59" ){
+                timeField.append("Time: ", hour, ":", minutes, " PM")
+            } 
+            else  {
+                timeField.append("Time: ", hour, ":", minutes, "AM")
+            }
+
+
         let container = document.getElementById("container")
         let newPTage = document.createElement("p")
         console.log(data)
-        console.log(time)
+        console.log(hour)
     })
 }
