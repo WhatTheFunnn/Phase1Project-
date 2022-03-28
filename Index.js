@@ -51,7 +51,11 @@ function currentWeatherInfo() {
             let gustField = document.getElementById("gust")
             gustField.append("Gust Speed: ", gust)
 
-            console.log(data)
+            //console.log(data)
             console.log()
         })
 }
+
+// function twentyFourHour(data) {
+//     console.log(data.dataseries)
+// }
