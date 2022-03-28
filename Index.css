@@ -1,4 +1,27 @@
+body{
+    background-color: darkslateblue;
+}
+
 h1 {
-    color: blueviolet;
+    color: black;
     text-align: center;
+}
+
+#navbar{
+    background-color: green;
+    width: fit-content;
+    height: 45px;
+    border-bottom: 3px grey;
+    border-left: 3px gray;
+    border-top: 3px black;
+    border-right: 3px black;
+}
+
+#container{
+    background-color: cadetblue;
+}
+
+#date{
+    font-weight: Bold;
+    
 }
