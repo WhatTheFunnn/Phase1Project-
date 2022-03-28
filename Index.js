@@ -62,10 +62,15 @@ function currentWeatherInfo() {
 }
 
 function locAndSearch(data) {
-    let location = data.address
+    let location = data.address.split(" ")
+    let city = location[0].charAt(0).toUpperCase() + location[0].slice(1)
+    let state = location[1]
     let locationField = document.getElementById("cityandstate")
-    locationField.append(location)
-    console.log(data)
+    locationField.append(city, ", ", state)
+
+    let searchBar = document.getElementById("search")
+    locationField.append(searchBar)
+    alert("hi")
 }
 
 // function twentyFourHour(allData) {
