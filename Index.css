@@ -1,24 +1,35 @@
 body{
-    background-color: darkslateblue;
+    background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 8%, rgba(91,91,131,1) 66%, rgba(0,212,255,1) 100%);
 }
 
 h1 {
-    color: black;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3{
     text-align: center;
 }
 
 #navbar{
-    background-color: green;
-    width: fit-content;
+    background-color: rgb(95, 95, 95);
+    display: block;
     height: 45px;
-    border-bottom: 3px grey;
-    border-left: 3px gray;
-    border-top: 3px black;
-    border-right: 3px black;
+    margin-right: -8px;
+    margin-left: -8px;
+    max-width: auto;
+    border-top: .5px solid rgb(23, 24, 24);
+    border-bottom: .5px solid rgb(23, 24, 24);
 }
 
 #container{
-    background-color: cadetblue;
+    text-align: center;
+    background: transparent;
+    margin-right: -8px;
+    margin-left: -8px;
 }
 
 #date{
