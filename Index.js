@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
-    weatherInfo()
+    currentWeatherInfo()
 })
 
 function weatherLoad(){
     fetch("https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0")
     .then(response => response.json())
     .then(data => {
-
-        let currentTemp = (current.temp2m * 9/5 + 32 + " F")
-        let threeHourTemp = (threeHour.temp2m * 9/5 + 32 + " F")
-
         let container = document.getElementById("container")
         let newPTage = document.createElement("p")
         container.append(newPTage)   
@@ -19,7 +15,7 @@ function weatherLoad(){
     })
 }
 
-function weatherInfo(){
+function currentWeatherInfo(){
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
     .then(response => response.json())
     .then(data => {
@@ -39,11 +35,13 @@ function weatherInfo(){
             else  {
                 timeField.append("Time: ", hour, ":", minutes, "AM")
             }
-
-
-        let container = document.getElementById("container")
-        let newPTage = document.createElement("p")
-        console.log(data)
-        console.log(hour)
-    })
-}
+            let temp = data.currentConditions.temp    
+            let tempField = document.getElementById("tempinfo")
+            tempField.append("Temperature: ", temp * 9/5 + 32 + " F")
+            
+            
+            
+            console.log(data)
+            console.log()
+        })
+    }
