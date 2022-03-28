@@ -11,51 +11,92 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h3{
-    text-align: center;
-}
-
-#navbar{
+#locationbar {
+    position: relative;
     background-color: rgb(95, 95, 95);
+    opacity: 60%;
     display: block;
     height: 45px;
     margin-right: -8px;
     margin-left: -8px;
     max-width: auto;
     border-top: .5px solid rgb(23, 24, 24);
+
+}
+
+#cityandstate{
+    float: left;
+    padding-left: 53px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar{
+    position: absolute;
+    background-color: rgb(95, 95, 95);
+    height: 45px;
+    right:  -8px;
+    left: -8px;
+    max-width: auto;
     border-bottom: .5px solid rgb(23, 24, 24);
         
 }
 
 #current {
     float: left;
-    padding-left: 20px;
+    padding-left: 60px;
     padding-right: 60px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #twentyfourhour {
     float: left;
     padding-left: 10px;
     padding-right: 60px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #threeday {
     float: left;
     padding-left: 10px;
     padding-right: 60px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #weekly {
     float: left;
     padding-left: 10px;
     padding-right: 60px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+h3{
+    margin-top: 100px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 #container{
     text-align: center;
     background: transparent;
     margin-right: -8px;
     margin-left: -8px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #date{
