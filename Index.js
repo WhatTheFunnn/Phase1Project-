@@ -26,8 +26,8 @@ function currentWeatherInfo(){
         let time = data.currentConditions.datetime.split(":")
         let hour = (time[0] % 12) 
         let minutes = time[1]
-        let dateField = document.getElementById("dateinfo")
-        let timeField = document.getElementById("timeinfo")
+        let dateField = document.getElementById("date")
+        let timeField = document.getElementById("time")
         dateField.append("Date: " + month + "-" + day + "-" + year, " ")
             if (time > "11:59:59" ){
                 timeField.append("Time: ", hour, ":", minutes, " PM")
@@ -36,12 +36,24 @@ function currentWeatherInfo(){
                 timeField.append("Time: ", hour, ":", minutes, "AM")
             }
             let temp = data.currentConditions.temp    
-            let tempField = document.getElementById("tempinfo")
+            let tempField = document.getElementById("temp")
             tempField.append("Temperature: ", temp * 9/5 + 32 + " F")
+            let conditions = data.currentConditions.conditions
+            let condField = document.getElementById("conditions")
+            condField.append("Condition: ", conditions)
+            let icon = data.currentConditions.icon
+            let iconField = document.getElementById("icon")
+            iconField.append(icon)
+
+            let precipProb = data.currentConditions.precipprob
+            let preciProbField = document.getElementById("preciprob")
+            preciProbField.append("Probability: ",precipProb)
             
-            
-            
+            let precip = data.currentConditions.precip
+            let preciField = document.getElementById("preci")
+            preciField.append(precip)
+
             console.log(data)
-            console.log()
+            console.log(precipProb)
         })
     }
