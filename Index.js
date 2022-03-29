@@ -80,8 +80,8 @@ function locAndSearch(data) {
     let searchBar = document.getElementById("search")
     locationField.append(searchBar)
 
-    let form = document.getElementById("form")
-    form.addEventListener('submit', (event) => {
+    searchBar.addEventListener('search', (e) => {
+        alert("hi")
     })
 }
 
@@ -102,19 +102,30 @@ function hourly(data) {
     container.append(currentTemp)
     container.append(nextHour1)
     container.append(nextTemp1)
-    console.log(hours)
     if (hour) {
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
-            if (hour == newHour.datetime.split(":")[0]) {
+            if (hour == newHour.datetime.split(":")[0] < 11) {
                 let doubleDigit = newHour.datetime.split(":")[0]
                 currentHour.append("Time: ", hour % 12, " AM"), currentTemp.append("Temperature: ", hours[doubleDigit.split("")[1]].temp * 9 / 5 + 32 + " F")
             }
-            else if (hour == newHour.datetime.split(":")[0] && hour >= 12){
-                currentHour.append("Time: ", hour % 12, " AM"), currentTemp.append("Temperature: ", hours[hour].temp * 9 / 5 + 32 + " F")
+            else if (hour == newHour.datetime.split(":")[0]) {console.log(newHour.datetime.split(":")[0])
+                currentHour.append("Time: ", hour % 12, " PM"), currentTemp.append("Temperature: ", hours[hour].temp * 9 / 5 + 32 + " F")
             }
-            
-        } 
+
+        }
+
     }
+
+    // if (hour) {
+    //     for (let x = 0; x < hours.length; x++) {
+    //     newHour = ++hour
+    //     console.log(hours[newHour].datetime.split(":"))
+    //         if(hour == hours[newHour]){
+    //         }       
+            
+            
+    //     }
+    // }
 
 }
