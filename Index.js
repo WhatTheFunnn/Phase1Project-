@@ -41,23 +41,26 @@ function currentWeatherInfo() {
             iconField.append(icon)
 
             let precipProb = data.currentConditions.precipprob
+            if(precipProb == null){
+                precipProb = ("0%")
+            }
             let preciProbField = document.getElementById("preciprob")
             preciProbField.append("Precipitation Probability: ", precipProb)
 
             let precip = data.currentConditions.precip
             let preciField = document.getElementById("preci")
-            preciField.append("Precipitation: ", precip)
+            preciField.append("Precipitation: ", precip, " In")
 
             let wind = data.currentConditions.windspeed
             let windField = document.getElementById("wind")
-            windField.append("Wind Speed:", wind)
+            windField.append("Wind Speed:", wind, " mph")
 
             let gust = data.currentConditions.windgust
             let gustField = document.getElementById("gust")
-            gustField.append("Gust Speed: ", gust)
+            gustField.append("Gust Speed: ", gust, " mph")
 
             locAndSearch(data)
-            twentyFourHour(data)
+            hourly(data)
         })
 }
 
@@ -78,6 +81,10 @@ function locAndSearch(data) {
     })
 }
 
-function twentyFourHour(data) {
+function hourly(data) {
+    let title = document.getElementById("forecast")
+    let container = document.getElementById("containerB")
+    title.append("Hourly Forecast")
+    
     console.log(data)
 }
