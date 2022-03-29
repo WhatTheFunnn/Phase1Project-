@@ -7,31 +7,6 @@ function currentWeatherInfo() {
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
         .then(response => response.json())
         .then(data => {
-            let date = data.days[0].datetime.split("-")
-            let year = date[0]
-            let month = date[1]
-            let day = date[2]
-            let time = data.currentConditions.datetime.split(":")
-            let hour = (time[0] % 12)
-            if (hour == 0) {
-                hour = 12
-            }
-            let minutes = time[1]
-
-            let dateField = document.getElementById("date")
-            let timeField = document.getElementById("time")
-            dateField.append("Date: " + month + "-" + day + "-" + year, " ")
-            if (time > "11:59:59") {
-                timeField.append( hour, ":", minutes, " PM")
-            }
-            else if (time < "11:59:59") {
-                timeField.append( hour, ":", minutes, "AM")
-            }
-
-            let temp = data.currentConditions.temp
-            let tempField = document.getElementById("temp")
-            tempField.append("Temperature: ", temp * 9 / 5 + 32 + " F")
-
             let conditions = data.currentConditions.conditions
             let condField = document.getElementById("conditions")
             condField.append("Condition: ", conditions)
@@ -41,9 +16,10 @@ function currentWeatherInfo() {
             iconField.append(icon)
 
             let precipProb = data.currentConditions.precipprob
-            if(precipProb == null){
+            if (precipProb == null) {
                 precipProb = ("0%")
             }
+
             let preciProbField = document.getElementById("preciprob")
             preciProbField.append("Precipitation Probability: ", precipProb)
 
@@ -59,9 +35,33 @@ function currentWeatherInfo() {
             let gustField = document.getElementById("gust")
             gustField.append("Gust Speed: ", gust, " mph")
 
+            time(data)
             locAndSearch(data)
             hourly(data)
         })
+}
+
+function time(data) {
+    let date = data.days[0].datetime.split("-")
+    let year = date[0]
+    let month = date[1]
+    let day = date[2]
+    let time = data.currentConditions.datetime.split(":")
+    let hour = (time[0] % 12)
+    if (hour == 0) {
+        hour = 12
+    }
+    let minutes = time[1]
+
+    let dateField = document.getElementById("date")
+    let timeField = document.getElementById("time")
+    dateField.append("Date: " + month + "-" + day + "-" + year, " ")
+    if (time > "11:59:59") {
+        timeField.append(hour, ":", minutes, " PM")
+    }
+    else if (time < "11:59:59") {
+        timeField.append(hour, ":", minutes, "AM")
+    }
 }
 
 function locAndSearch(data) {
@@ -70,7 +70,7 @@ function locAndSearch(data) {
     let state = location[1]
     let temp = data.currentConditions.temp
     let locationField = document.getElementById("cityandstate")
-    locationField.append(" ", temp * 9 / 5 + 32 +  "  | " , " ")
+    locationField.append(" ", temp * 9 / 5 + 32 + "  | ", " ")
     locationField.append(city, ", ", state,)
 
     let searchBar = document.getElementById("search")
@@ -83,8 +83,34 @@ function locAndSearch(data) {
 
 function hourly(data) {
     let title = document.getElementById("forecast")
-    let container = document.getElementById("containerB")
     title.append("Hourly Forecast")
+    let container = document.getElementById("containerB")
+
+    let time = data.currentConditions.datetime.split(":")
+    let hour = (time[0])
+    let today = data.days[0]
+    let hours = today.hours
+    let currentHour = document.createElement("h4")
+    let currentTemp = document.createElement("p")
     
-    console.log(data)
+    container.append(currentHour)
+    container.append(currentTemp)
+    console.log(hours)
+    if (hour) {
+        for (let x = 0; x < hours.length; x++) {
+            let newHour = hours[x]
+            if (hour == newHour.datetime.split(":")[0] && hour < 10) {
+                let doubleDigit = newHour.datetime.split(":")[0]
+                currentHour.append("Time: ", hour % 12, " PM "), currentTemp.append("Temperature: ", hours[doubleDigit.split("")[1]].temp * 9 / 5 + 32 + " F")
+            }
+
+            else if (time > "11:59:59" && time < "23:59:59") {
+                currentHour.append("Time: ", hour % 12, " PM ", " Temperature: ", hours[hour].temp  * 9 / 5 + 32 + " F")
+            }
+
+            else if (time < "11:59:59" && time >= "00:00:00") {
+                currentHour.append("Time: ", hour % 12, " AM ", " Temperature: ", hours[hour].temp  * 9 / 5 + 32 + " F")
+            }
+        }
+    }
 }
