@@ -22,10 +22,10 @@ function currentWeatherInfo() {
             let timeField = document.getElementById("time")
             dateField.append("Date: " + month + "-" + day + "-" + year, " ")
             if (time > "11:59:59") {
-                timeField.append("Time: ", hour, ":", minutes, " PM")
+                timeField.append( hour, ":", minutes, " PM")
             }
             else if (time < "11:59:59") {
-                timeField.append("Time: ", hour, ":", minutes, "AM")
+                timeField.append( hour, ":", minutes, "AM")
             }
 
             let temp = data.currentConditions.temp
@@ -57,7 +57,7 @@ function currentWeatherInfo() {
             gustField.append("Gust Speed: ", gust)
 
             locAndSearch(data)
-            //twentyFourHour(allData)
+            twentyFourHour(data)
         })
 }
 
@@ -65,14 +65,19 @@ function locAndSearch(data) {
     let location = data.address.split(" ")
     let city = location[0].charAt(0).toUpperCase() + location[0].slice(1)
     let state = location[1]
+    let temp = data.currentConditions.temp
     let locationField = document.getElementById("cityandstate")
-    locationField.append(city, ", ", state)
+    locationField.append(" ", temp * 9 / 5 + 32 +  "  | " , " ")
+    locationField.append(city, ", ", state,)
 
     let searchBar = document.getElementById("search")
     locationField.append(searchBar)
-    alert("hi")
+
+    let form = document.getElementById("form")
+    form.addEventListener('submit', (event) => {
+    })
 }
 
-// function twentyFourHour(allData) {
-//     console.log(allData)
-// }
+function twentyFourHour(data) {
+    console.log(data)
+}
