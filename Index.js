@@ -7,6 +7,10 @@ function currentWeatherInfo() {
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
         .then(response => response.json())
         .then(data => {
+
+            let temp = data.currentConditions.temp
+            let tempField = document.getElementById("temp")
+            tempField.append(" ", temp * 9 / 5 + 32, " F")
             let conditions = data.currentConditions.conditions
             let condField = document.getElementById("conditions")
             condField.append("Condition: ", conditions)
@@ -92,25 +96,25 @@ function hourly(data) {
     let hours = today.hours
     let currentHour = document.createElement("h4")
     let currentTemp = document.createElement("p")
-    
+    let nextHour1 = document.createElement("h4")
+    let nextTemp1 = document.createElement("p")
     container.append(currentHour)
     container.append(currentTemp)
+    container.append(nextHour1)
+    container.append(nextTemp1)
     console.log(hours)
     if (hour) {
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
-            if (hour == newHour.datetime.split(":")[0] && hour < 10) {
+            if (hour == newHour.datetime.split(":")[0]) {
                 let doubleDigit = newHour.datetime.split(":")[0]
-                currentHour.append("Time: ", hour % 12, " PM "), currentTemp.append("Temperature: ", hours[doubleDigit.split("")[1]].temp * 9 / 5 + 32 + " F")
+                currentHour.append("Time: ", hour % 12, " AM"), currentTemp.append("Temperature: ", hours[doubleDigit.split("")[1]].temp * 9 / 5 + 32 + " F")
             }
-
-            else if (time > "11:59:59" && time < "23:59:59") {
-                currentHour.append("Time: ", hour % 12, " PM ", " Temperature: ", hours[hour].temp  * 9 / 5 + 32 + " F")
+            else if (hour == newHour.datetime.split(":")[0] && hour >= 12){
+                currentHour.append("Time: ", hour % 12, " AM"), currentTemp.append("Temperature: ", hours[hour].temp * 9 / 5 + 32 + " F")
             }
-
-            else if (time < "11:59:59" && time >= "00:00:00") {
-                currentHour.append("Time: ", hour % 12, " AM ", " Temperature: ", hours[hour].temp  * 9 / 5 + 32 + " F")
-            }
-        }
+            
+        } 
     }
+
 }
