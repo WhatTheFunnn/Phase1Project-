@@ -16,6 +16,11 @@ function currentWeatherInfo() {
             let condField = document.getElementById("conditions")
             condField.append("Condition: ", conditions)
 
+            let location = data.resolvedAddress.split(",")
+            let newLocation = (location[0] + "," + location[1])
+            let locationField = document.getElementById("location")
+            locationField.append(newLocation)
+
             let icon = data.currentConditions.icon
             let iconField = document.getElementById("icon")
             iconField.append(icon)
@@ -43,7 +48,7 @@ function currentWeatherInfo() {
             time(data)
             locAndSearch(data)
             hourly(data)
-            // weekly(data)
+            weekly(data)
         })
 };
 
@@ -91,8 +96,6 @@ function locAndSearch(data) {
 };
 
 function hourly(data) {
-    let title = document.getElementById("forecast")
-    title.append("Hourly Forecast")
     let container = document.getElementById("containerB")
 
     let time = data.currentConditions.datetime.split(":")
@@ -126,7 +129,7 @@ function hourly(data) {
                 if (newHour > 11 && newHour < 25) {
                     newT.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " PM")
                 }
-                else if (newHour >= 0 && newHour < 12){
+                else if (newHour >= 0 && newHour < 12) {
                     newT.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " AM")
                 }
                 newP.append("Temperature: ", hours[newHour].temp * 9 / 5 + 32 + " F")
@@ -135,32 +138,31 @@ function hourly(data) {
     }
 }
 
+function weekly(data) {
+    console.log(data)
+}
 
-
-// function weekly() {
-//     let container = document.getElementById("containerB")
-//     container.remove("h4","p")
-// }
-
-function navButtons(data){
+function navButtons() {
     let hourlyButton = document.getElementById("hourly")
     let weeklyButton = document.getElementById("weekly")
     let container = document.getElementById("containerB")
     let container1 = document.getElementById("containerC")
+    let title = document.getElementById("forecast")
+    let title1 = document.getElementById("weeklyForecast")
     weeklyButton.addEventListener("click", () => {
-            container1.style.visibility = "visible";
-            container.style.visibility = "hidden";
-        
+        title1.style.visibility = "visible";
+        title.style.visibility = "hidden";
+        container1.style.visibility = "visible";
+        container.style.visibility = "hidden";
 
-    hourlyButton.addEventListener("click", () => {
-        let title = document.getElementById("forecast")
-        title.innerText = ""
-        
-        container1.style.visibility = "hidden";
-        
-        container.style.visibility = "visible";
 
-        
+        hourlyButton.addEventListener("click", () => {
+            title1.style.visibility = "hidden";
+            title.style.visibility = "visible";
+            container1.style.visibility = "hidden";
+            container.style.visibility = "visible";
+
+
+        })
     })
-})
 }
