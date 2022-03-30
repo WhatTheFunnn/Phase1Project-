@@ -108,7 +108,6 @@ h1 {
 }
 
 #containerA {
-    background-image: image();
     margin-top: -10px;
     position: absolute;
     background-color: rgb(95, 95, 95, 0.6);
