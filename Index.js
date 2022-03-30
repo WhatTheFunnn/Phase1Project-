@@ -46,8 +46,8 @@ function currentWeatherInfo() {
             time(data)
             locAndSearch(data)
             weekly(data)
-            // weatherBG(data)
             hourly(data)
+            weatherBG(data)
         })
 };
 
@@ -87,11 +87,16 @@ function locAndSearch(data) {
     locationField.append(searchBar)
 
     searchBar.addEventListener('search', (e) => {
-        alert("hi")
+        if(searchBar.innerText !== "City and State"){
+        }
         //Will have to get search bar to use location suggestion.
         // then call on the current weather info function 
         // then update the element of city and state in the url
+        else if(searchBar.innerText = "" ){
+            alert("please input city, state")
+        }
     })
+        
 };
 
 function hourly(data) {
@@ -101,7 +106,7 @@ function hourly(data) {
     let hour = (time[0])
     let today = data.days[0]
     let hours = today.hours
-   
+
     if (hour) {
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
@@ -111,15 +116,14 @@ function hourly(data) {
             container.append(newTime)
             container.append(newTemp)
             container.append(newCond)
-
-            if (newHour.datetime.split(":")[0]) { 
-                if (newHour.datetime.split(":")[0] < 12 && newHour.datetime.split(":")[0] >= 00) {
+            if (hour < newHour.datetime.split(":")[0]) {
+                if (newHour.datetime.split(":")[0] < 12 && newHour.datetime.split(":")[0]) {
                     newTime.append("Time: ", newHour.datetime.split(":")[0] % 12, " AM")
                     newTemp.append("Temperature: ", newHour.temp * 9 / 5 + 32 + " F")
                     newCond.append("Conditions: ", newHour.conditions)
-
-                }
-                if (newHour.datetime.split(":")[0] < 11 && newHour.datetime.split(":")[0] > 23) {
+                }   
+                
+               else {
                     newTime.append("Time: ", newHour.datetime.split(":")[0] % 12, " PM")
                     newTemp.append("Temperature: ", newHour.temp * 9 / 5 + 32 + " F")
                     newCond.append("Conditions: ", newHour.conditions)
@@ -185,14 +189,24 @@ function navButtons() {
     })
 }
 
-// function weatherBG(data) {
-//     console.log(data)
-//     let currentCondition = data.currentConditions.conditions
-//     if (currentCondition.innerText = "overcast") {
-//         document.getElementById("navBar").style.backgroundImage =
-//             "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Overcast_skies_from_Tropical_Storm_Danny.jpg/1200px-Overcast_skies_from_Tropical_Storm_Danny.jpg?20091209195310')"
-//     }
-//     else {
+function weatherBG(data) {
+    let currentCondition = data.currentConditions.conditions
+    let a = document.getElementById("containerA")
+    let b = document.getElementById("containerB")
+    let c = document.getElementById("containerC")
+    console.log(currentCondition)
 
-//     }
-// }
+    switch(currentCondition.includes()) {
+        case "rain": 
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+
+        case "overcast":
+
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Overcast_skies_from_Tropical_Storm_Danny.jpg/1200px-Overcast_skies_from_Tropical_Storm_Danny.jpg?20091209195310')"
+        c.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Overcast_skies_from_Tropical_Storm_Danny.jpg/1200px-Overcast_skies_from_Tropical_Storm_Danny.jpg?20091209195310')"
+    }
+
+}
