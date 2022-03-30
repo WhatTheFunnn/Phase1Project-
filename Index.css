@@ -56,6 +56,7 @@ h1 {
     float: left;
     padding-left: 60px;
     padding-right: 60px;
+    background-color: rgb(95, 95, 95, 0.1);
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px 3px lightseagreen;
     font-family: Arial, Helvetica, sans-serif;
@@ -72,7 +73,7 @@ h1 {
 
 #weekly {
     float: left;
-    padding-left: 10px;
+    padding-left: 27px;
     padding-right: 60px;
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px 3px lightseagreen;
@@ -125,6 +126,20 @@ h1 {
     width: 520px;
 }
 
+#containerC {
+    margin-top: -10px;
+    position: absolute;
+    background-color: rgb(95, 95, 95, 0.7);
+    left: 950px;
+    right: 90px;
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
+    text-indent: 50px;
+    height: auto;
+    width: 520px;
+    visibility: hidden;
+}
 #date {
     font-weight: Bold;
     

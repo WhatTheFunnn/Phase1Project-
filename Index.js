@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
     currentWeatherInfo()
+    navButtons()
 });
 
 function currentWeatherInfo() {
@@ -42,6 +43,7 @@ function currentWeatherInfo() {
             time(data)
             locAndSearch(data)
             hourly(data)
+            // weekly(data)
         })
 };
 
@@ -97,7 +99,6 @@ function hourly(data) {
     let hour = (time[0])
     let today = data.days[0]
     let hours = today.hours
-    //console.log(hours)
     let currentHour = document.createElement("h4")
     let currentTemp = document.createElement("p")
     container.append(currentHour)
@@ -122,7 +123,6 @@ function hourly(data) {
                 let newP = document.createElement("p")
                 container.append(newT)
                 container.append(newP)
-                console.log(newHour)
                 if (newHour > 11 && newHour < 25) {
                     newT.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " PM")
                 }
@@ -133,5 +133,34 @@ function hourly(data) {
             }
         }
     }
+}
 
+
+
+// function weekly() {
+//     let container = document.getElementById("containerB")
+//     container.remove("h4","p")
+// }
+
+function navButtons(data){
+    let hourlyButton = document.getElementById("hourly")
+    let weeklyButton = document.getElementById("weekly")
+    let container = document.getElementById("containerB")
+    let container1 = document.getElementById("containerC")
+    weeklyButton.addEventListener("click", () => {
+            container1.style.visibility = "visible";
+            container.style.visibility = "hidden";
+        
+
+    hourlyButton.addEventListener("click", () => {
+        let title = document.getElementById("forecast")
+        title.innerText = ""
+        
+        container1.style.visibility = "hidden";
+        
+        container.style.visibility = "visible";
+
+        
+    })
+})
 }
