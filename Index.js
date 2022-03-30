@@ -1,19 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed');
     currentWeatherInfo()
     navButtons()
 });
 
 function currentWeatherInfo() {
-    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
+    let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json"
+
+    fetch(url)
         .then(response => response.json())
         .then(data => {
-
+            //location data parsed and appended to divA
             let location = data.resolvedAddress.split(",")
             let newLocation = (location[0] + "," + location[1])
             let locationField = document.getElementById("location")
             locationField.append("Location: ", newLocation)
-
+            //temp data parsed and appended to divA
             let temp = data.currentConditions.temp
             let tempField = document.getElementById("temp")
             tempField.append("Temperature: ", temp * 9 / 5 + 32, " Degrees", " F")
@@ -44,7 +45,7 @@ function currentWeatherInfo() {
 
 
             time(data)
-            locAndSearch(data)
+            locAndSearch(data, url)
             weekly(data)
             hourly(data)
             weatherBG(data)
@@ -74,7 +75,7 @@ function time(data) {
     }
 };
 
-function locAndSearch(data) {
+function locAndSearch(data, url) {
     let location = data.address.split(" ")
     let city = location[0].charAt(0).toUpperCase() + location[0].slice(1)
     let state = location[1]
@@ -83,19 +84,21 @@ function locAndSearch(data) {
     locationField.append(" ", temp * 9 / 5 + 32 + " F. | ", " ")
     locationField.append(city, ", ", state,)
 
-    let searchBar = document.getElementById("search")
-    locationField.append(searchBar)
+    // let searchBar = document.getElementById("search")
+    // locationField.append(searchBar)
 
-    searchBar.addEventListener('search', (e) => {
-        if(searchBar.innerText !== "City and State"){
-        }
+    // searchBar.addEventListener('search', (e) => {
+    //     let url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/spokane%20WA?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json"
+         
+    //     currentWeatherInfo(url)
+    
+            
         //Will have to get search bar to use location suggestion.
         // then call on the current weather info function 
         // then update the element of city and state in the url
-        else if(searchBar.innerText = "" ){
-            alert("please input city, state")
-        }
-    })
+       
+        
+    // })
         
 };
 
@@ -116,6 +119,7 @@ function hourly(data) {
             container.append(newTime)
             container.append(newTemp)
             container.append(newCond)
+
             if (hour < newHour.datetime.split(":")[0]) {
                 if (newHour.datetime.split(":")[0] < 12 && newHour.datetime.split(":")[0]) {
                     newTime.append("Time: ", newHour.datetime.split(":")[0] % 12, " AM")
@@ -194,19 +198,27 @@ function weatherBG(data) {
     let a = document.getElementById("containerA")
     let b = document.getElementById("containerB")
     let c = document.getElementById("containerC")
-    console.log(currentCondition)
-
-    switch(currentCondition.includes()) {
-        case "rain": 
+    if (currentCondition == "Rain") {
         a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
         b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
         c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
-
-        case "overcast":
-
-        a.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
-        b.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Overcast_skies_from_Tropical_Storm_Danny.jpg/1200px-Overcast_skies_from_Tropical_Storm_Danny.jpg?20091209195310')"
-        c.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Overcast_skies_from_Tropical_Storm_Danny.jpg/1200px-Overcast_skies_from_Tropical_Storm_Danny.jpg?20091209195310')"
     }
 
+    else if (currentCondition != "Rain" && currentCondition == "Partially cloudy") {
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif?cid=ecf05e471vbipwsodtlvxejxnbteynw6twxn5abw348fi79q&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media1.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif?cid=ecf05e471vbipwsodtlvxejxnbteynw6twxn5abw348fi79q&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media1.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif?cid=ecf05e471vbipwsodtlvxejxnbteynw6twxn5abw348fi79q&rid=giphy.gif&ct=g')"
+    }
+
+    else if (currentCondition != "Partially cloudy" && currentCondition == "Overcast") {
+        a.style.backgroundImage = "url('https://media3.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif?cid=ecf05e47y4x15tyqu0acs13tnn77e0w5kxag93xuch4bki2k&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media3.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif?cid=ecf05e47y4x15tyqu0acs13tnn77e0w5kxag93xuch4bki2k&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media3.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif?cid=ecf05e47y4x15tyqu0acs13tnn77e0w5kxag93xuch4bki2k&rid=giphy.gif&ct=g')"
+    }
+
+    else if (currentCondition != "Overcast" && currentCondition == "Clear") {
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+    }
 }
