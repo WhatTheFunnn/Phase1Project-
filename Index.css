@@ -62,6 +62,10 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#hourly:hover{
+    background-color: rgb(0, 0, 0, .4);
+}
+
 #weekly {
     float: left;
     padding-left: 27px;
@@ -69,6 +73,10 @@ h1 {
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px 3px lightseagreen;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#weekly:hover {
+    background-color: rgb(0, 0, 0, .4);
 }
 
 #currentforecast {
@@ -152,4 +160,33 @@ h1 {
     font-weight: bold;
     margin-top: -34px;
     
+}
+#a{
+    height: 100px;
+    width: auto;
+    text-align: left;
+}
+
+#b{
+    height: 100px;
+    width: auto;
+    text-align: left;
+}
+
+#c{
+    height: 100px;
+    width: auto;
+    text-align: left;
+}
+
+#d{
+    height: 100px;
+    width: auto;
+    text-align: left;
+}
+
+#e{
+    height: 100px;
+    width: auto;
+    text-align: left;
 }

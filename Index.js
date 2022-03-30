@@ -11,7 +11,8 @@ function currentWeatherInfo() {
 
             let temp = data.currentConditions.temp
             let tempField = document.getElementById("temp")
-            tempField.append(" ", temp * 9 / 5 + 32, " F")
+            tempField.append(" ", temp * 9 / 5 + 32, " Degrees", " F")
+
             let conditions = data.currentConditions.conditions
             let condField = document.getElementById("conditions")
             condField.append("Condition: ", conditions)
@@ -47,8 +48,8 @@ function currentWeatherInfo() {
 
             time(data)
             locAndSearch(data)
-            hourly(data)
             weekly(data)
+            hourly(data)
         })
 };
 
@@ -139,7 +140,34 @@ function hourly(data) {
 }
 
 function weekly(data) {
-    console.log(data)
+    
+    let dayOne = data.days[0].datetime.split("-")
+    document.getElementById("dayA").append(dayOne[1] + "/" + dayOne[2])
+    document.getElementById("dayATemp").append("Temperature: ", data.days[0].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayACond").append("Conditions: ", data.days[0].conditions)
+
+    let dayTwo = data.days[1].datetime.split("-")
+    document.getElementById("dayB").append(dayTwo[1] + "/" + dayTwo[2])
+    document.getElementById("dayBTemp").append("Temperature: ", data.days[1].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayBCond").append("Conditions: ", data.days[1].conditions)
+
+    let dayThree = data.days[2].datetime.split("-")
+    document.getElementById("dayC").append(dayThree[1] + "/" + dayThree[2])
+    document.getElementById("dayCTemp").append("Temperature: ", data.days[2].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayCCond").append("Conditions: ", data.days[2].conditions)
+
+    let dayFour = data.days[3].datetime.split("-")
+    document.getElementById("dayD").append(dayFour[1] + "/" + dayFour[2])
+    document.getElementById("dayDTemp").append("Temperature: ", data.days[3].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayDCond").append("Conditions: ", data.days[3].conditions)
+
+    let dayFive = data.days[4].datetime.split("-")
+    document.getElementById("dayE").append(dayFive[1] + "/" + dayFive[2])
+    document.getElementById("dayETemp").append("Temperature: ", data.days[4].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayECond").append("Conditions: ", data.days[4].conditions)
+
+
+
 }
 
 function navButtons() {
