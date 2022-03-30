@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
     currentWeatherInfo()
-})
+});
 
 function currentWeatherInfo() {
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
@@ -43,7 +43,7 @@ function currentWeatherInfo() {
             locAndSearch(data)
             hourly(data)
         })
-}
+};
 
 function time(data) {
     let date = data.days[0].datetime.split("-")
@@ -66,7 +66,7 @@ function time(data) {
     else if (time < "11:59:59") {
         timeField.append(hour, ":", minutes, "AM")
     }
-}
+};
 
 function locAndSearch(data) {
     let location = data.address.split(" ")
@@ -74,7 +74,7 @@ function locAndSearch(data) {
     let state = location[1]
     let temp = data.currentConditions.temp
     let locationField = document.getElementById("cityandstate")
-    locationField.append(" ", temp * 9 / 5 + 32 + "  | ", " ")
+    locationField.append(" ", temp * 9 / 5 + 32 + " F. | ", " ")
     locationField.append(city, ", ", state,)
 
     let searchBar = document.getElementById("search")
@@ -86,7 +86,7 @@ function locAndSearch(data) {
         // then call on the current weather info function 
         // then update the element of city and state in the url
     })
-}
+};
 
 function hourly(data) {
     let title = document.getElementById("forecast")
@@ -113,18 +113,24 @@ function hourly(data) {
                 currentHour.append("Time: ", hour % 12, " PM"), currentTemp.append("Temperature: ", hours[hour].temp * 9 / 5 + 32 + " F")
             }
 
-        }
+        };
 
         for (let x = 0; x < hours.length; x++) {
             newHour = ++hour
-            if (newHour == (hours[newHour].datetime.split(":")[0])){
-            let newP = document.createElement("p")
-            container.append(newP)
-            newP.append(hours[newHour].datetime.split(":")[0])
+            if (newHour == (hours[newHour].datetime.split(":")[0])) {
+                let newT = document.createElement("h4")
+                let newP = document.createElement("p")
+                container.append(newT)
+                container.append(newP)
+                console.log(newHour)
+                if (newHour > 11 && newHour < 25) {
+                    newT.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " PM")
+                }
+                else if (newHour >= 0 && newHour < 12){
+                    newT.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " AM")
+                }
+                newP.append("Temperature: ", hours[newHour].temp * 9 / 5 + 32 + " F")
             }
-            // if (hours[newHour].datetime.split(":")[0]) {
-            //     container.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " PM", " , ", hours[newHour].temp * 9 / 5 + 32 + " F", " , ")
-            
         }
     }
 
