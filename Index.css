@@ -116,13 +116,13 @@ h1 {
     position: absolute;
     background-color: rgb(95, 95, 95, 0.7);
     left: 950px;
-    right: 80px;
+    right: 90px;
     color: rgb(255, 255, 255);
     text-shadow: 3px 3px 3px lightseagreen;
     font-family: Arial, Helvetica, sans-serif;
     text-indent: 50px;
     height: 300px;
-    width: 500px;
+    width: 520px;
 }
 
 #date {
@@ -135,6 +135,10 @@ h1 {
     text-indent: -10px;
     font-weight: bold;
     margin-top: -34px;
+    
 }
 
 
+/* .nextHour {
+
+} */

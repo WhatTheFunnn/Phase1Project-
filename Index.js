@@ -82,6 +82,9 @@ function locAndSearch(data) {
 
     searchBar.addEventListener('search', (e) => {
         alert("hi")
+        //Will have to get search bar to use location suggestion.
+        // then call on the current weather info function 
+        // then update the element of city and state in the url
     })
 }
 
@@ -94,14 +97,11 @@ function hourly(data) {
     let hour = (time[0])
     let today = data.days[0]
     let hours = today.hours
+    //console.log(hours)
     let currentHour = document.createElement("h4")
     let currentTemp = document.createElement("p")
-    let nextHour1 = document.createElement("h4")
-    let nextTemp1 = document.createElement("p")
     container.append(currentHour)
     container.append(currentTemp)
-    container.append(nextHour1)
-    container.append(nextTemp1)
     if (hour) {
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
@@ -109,23 +109,23 @@ function hourly(data) {
                 let doubleDigit = newHour.datetime.split(":")[0]
                 currentHour.append("Time: ", hour % 12, " AM"), currentTemp.append("Temperature: ", hours[doubleDigit.split("")[1]].temp * 9 / 5 + 32 + " F")
             }
-            else if (hour == newHour.datetime.split(":")[0]) {console.log(newHour.datetime.split(":")[0])
+            else if (hour == newHour.datetime.split(":")[0]) {
                 currentHour.append("Time: ", hour % 12, " PM"), currentTemp.append("Temperature: ", hours[hour].temp * 9 / 5 + 32 + " F")
             }
 
         }
 
+        for (let x = 0; x < hours.length; x++) {
+            newHour = ++hour
+            if (newHour == (hours[newHour].datetime.split(":")[0])){
+            let newP = document.createElement("p")
+            container.append(newP)
+            newP.append(hours[newHour].datetime.split(":")[0])
+            }
+            // if (hours[newHour].datetime.split(":")[0]) {
+            //     container.append("Time: ", hours[newHour].datetime.split(":")[0] % 12, " PM", " , ", hours[newHour].temp * 9 / 5 + 32 + " F", " , ")
+            
+        }
     }
-
-    // if (hour) {
-    //     for (let x = 0; x < hours.length; x++) {
-    //     newHour = ++hour
-    //     console.log(hours[newHour].datetime.split(":"))
-    //         if(hour == hours[newHour]){
-    //         }       
-            
-            
-    //     }
-    // }
 
 }
