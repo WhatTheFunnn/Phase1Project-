@@ -8,23 +8,19 @@ function currentWeatherInfo() {
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/colton%20OR?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json")
         .then(response => response.json())
         .then(data => {
+            
+            let location = data.resolvedAddress.split(",")
+            let newLocation = (location[0] + "," + location[1])
+            let locationField = document.getElementById("location")
+            locationField.append("Location: ", newLocation)
 
             let temp = data.currentConditions.temp
             let tempField = document.getElementById("temp")
-            tempField.append(" ", temp * 9 / 5 + 32, " Degrees", " F")
+            tempField.append("Temperature: ", temp * 9 / 5 + 32, " Degrees", " F")
 
             let conditions = data.currentConditions.conditions
             let condField = document.getElementById("conditions")
             condField.append("Condition: ", conditions)
-
-            let location = data.resolvedAddress.split(",")
-            let newLocation = (location[0] + "," + location[1])
-            let locationField = document.getElementById("location")
-            locationField.append(newLocation)
-
-            let icon = data.currentConditions.icon
-            let iconField = document.getElementById("icon")
-            iconField.append(icon)
 
             let precipProb = data.currentConditions.precipprob
             if (precipProb == null) {
