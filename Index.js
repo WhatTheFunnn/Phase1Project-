@@ -101,31 +101,8 @@ function hourly(data) {
     let hour = (time[0])
     let today = data.days[0]
     let hours = today.hours
-    let currentHour = document.createElement("h4")
-    let currentTemp = document.createElement("p")
-    let currentCondition = document.createElement("p")
-    container.append(currentHour)
-    container.append(currentTemp)
-    container.append(currentCondition)
-
+   
     if (hour) {
-        for (let x = 0; x < hours.length; x++) {
-            let newHour = hours[x]
-
-            if (hour === newHour.datetime.split(":")[0] && hour < 12) {
-                currentHour.innerText = "Time: " + hour % 12 + " AM"
-                currentTemp.innerText = "Temperature: " + (newHour.temp * 9 / 5 + 32) + " F"
-                currentCondition.innerText = "Conditions: " + newHour.conditions
-
-            }
-
-            else if (hour === newHour.datetime.split(":")[0] && hour <= 23) {
-                currentHour.innerText = "Time: " + hour % 12 + " PM"
-                currentTemp.innerText = "Temperature: " + (newHour.temp * 9 / 5 + 32) + " F"
-                currentCondition.innerText = "Conditions: " + newHour.conditions
-            }
-        }
-
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
             let newTime = document.createElement("h4")
@@ -135,7 +112,7 @@ function hourly(data) {
             container.append(newTemp)
             container.append(newCond)
 
-            if (hour < newHour.datetime.split(":")[0]) {
+            if (newHour.datetime.split(":")[0]) { 
                 if (newHour.datetime.split(":")[0] < 12 && newHour.datetime.split(":")[0] >= 00) {
                     newTime.append("Time: ", newHour.datetime.split(":")[0] % 12, " AM")
                     newTemp.append("Temperature: ", newHour.temp * 9 / 5 + 32 + " F")
