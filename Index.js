@@ -9,12 +9,11 @@ function currentWeatherInfo() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            //location data parsed and appended to divA
             let location = data.resolvedAddress.split(",")
             let newLocation = (location[0] + "," + location[1])
             let locationField = document.getElementById("location")
             locationField.append("Location: ", newLocation)
-            //temp data parsed and appended to divA
+
             let temp = data.currentConditions.temp
             let tempField = document.getElementById("temp")
             tempField.append("Temperature: ", temp * 9 / 5 + 32, " Degrees", " F")
@@ -46,7 +45,7 @@ function currentWeatherInfo() {
 
             time(data)
             locAndSearch(data, url)
-            weekly(data)
+            fiveDay(data)
             hourly(data)
             weatherBG(data)
         })
@@ -137,7 +136,7 @@ function hourly(data) {
     }
 }
 
-function weekly(data) {
+function fiveDay(data) {
 
     let dayOne = data.days[0].datetime.split("-")
     document.getElementById("dayA").append(dayOne[1] + "/" + dayOne[2])
@@ -170,7 +169,7 @@ function weekly(data) {
 
 function navButtons() {
     let hourlyButton = document.getElementById("hourly")
-    let weeklyButton = document.getElementById("weekly")
+    let weeklyButton = document.getElementById("fiveDay")
     let container = document.getElementById("containerB")
     let container1 = document.getElementById("containerC")
     let title = document.getElementById("forecast")
