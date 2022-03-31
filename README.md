@@ -6,7 +6,7 @@ PROJECT WEATHER APP
 
     Search bar interactivity for location has been disabled for functional purposes. Pleaes see BUGS below for more information. 
 
-    <iframe src="https://giphy.com/embed/pZXV4dQnzFQshnmOON" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pZXV4dQnzFQshnmOON">via GIPHY</a></p>
+    <iframe src="https://giphy.com/embed/pZXV4dQnzFQshnmOON" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
 
 
 
