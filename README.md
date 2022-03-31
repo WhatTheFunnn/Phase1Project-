@@ -6,6 +6,8 @@ PROJECT WEATHER APP
 
     Search bar interactivity for location has been disabled for functional purposes. Pleaes see BUGS below for more information. 
 
+    <iframe src="https://giphy.com/embed/pZXV4dQnzFQshnmOON" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pZXV4dQnzFQshnmOON">via GIPHY</a></p>
+
 
 
 # CONFIGURATION:
@@ -66,10 +68,13 @@ WeatherBG()
 
 
 # CONTACT INFORMATION:
+
+
     You may contact the Developer Dan Souza @ username@fakeEmail.com
 
-# COPYRIGHT INFO:
 
+
+# COPYRIGHT INFO:
 
 
 Raining World Travel GIF - Find & Share on GIPHY  - Andrii Sirenko
@@ -93,6 +98,7 @@ API weather information from Visual Crossing
     https://www.visualcrossing.com/weather/weather-data-services
 
 
+
 # BUGS:
 
 CurrentWeather()
@@ -113,11 +119,3 @@ WeatherBG()
     1. Each individual div had to be updated. If the div's were grabbed together or added together into a variable and were updated. The style element would not trigger or recognize that it was a CSS element. 
 
     2. Sometimes the if conditional statement does not load the correct background image to match the divA container condition. 
-
-
-Copyright and licensing information
-Contact information for the distributor or author
-A list of known bugs[3]
-Troubleshooting instructions[3]
-Credits and acknowledgments
-A news section (usually aimed at end users)
