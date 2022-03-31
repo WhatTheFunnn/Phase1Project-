@@ -1,7 +1,7 @@
 # Phase1Project-
 PROJECT WEATHER APP 
 
-# OPERATIONAL INSTRUCTIONS
+OPERATIONAL INSTRUCTIONS
     Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click. 
 
     Search bar interactivity for location has been disabled for functional purposes. Pleaes see BUGS below for more information. 
