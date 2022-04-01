@@ -209,13 +209,13 @@ function weatherBG(data) {
         c.style.backgroundImage = "url('https://media3.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif?cid=ecf05e47y4x15tyqu0acs13tnn77e0w5kxag93xuch4bki2k&rid=giphy.gif&ct=g')"
     }
 
-    else if (currentCondition != "Partially cloudy" && currentCondition == "Overcast") {
+    else if (currentCondition != "rain" && currentCondition == "Overcast") {
         a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
         b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
         c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
     }
 
-    else if (currentCondition != "Overcast" && currentCondition == "Clear") {
+    else if (currentCondition != "rain" && currentCondition == "Clear") {
         a.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
         b.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
         c.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
