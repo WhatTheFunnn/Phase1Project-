@@ -4,7 +4,7 @@ PROJECT WEATHER APP
 # OPERATIONAL INSTRUCTIONS
     Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click. 
 
-    Search bar interactivity for location has been disabled for functional purposes. Pleaes see BUGS below for more information. 
+    Search bar interactivity for location has been disabled for functional purposes. Please see BUGS below for more information. 
 
     <iframe src="https://giphy.com/embed/pZXV4dQnzFQshnmOON" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
 
