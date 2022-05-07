@@ -50,7 +50,7 @@ NavButtons()
 
 WeatherBG()
 
-    Takes in data from the currentWeatherInfo function. It then takes the divA, divB, and divC containers with a get element by id and sets them to individual variables. A If conditional is this set to look for the current conditions and compare them to rain, overcast, partially cloudy, and clear. The backgounds of the individual div's is updated to reflect the current weather conditions.
+    Takes in data from the currentWeatherInfo function. Determining the current conditions it then reflects a background on the webpage to give a visual aspect to the current weather conditions being experienced for the area. 
 
 
 
