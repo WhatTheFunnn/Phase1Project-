@@ -2,11 +2,7 @@
 PROJECT WEATHER APP 
 
 OPERATIONAL INSTRUCTIONS
-    Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click. 
-
-   
-   
-![giphy](https://user-images.githubusercontent.com/97571994/160963965-74ac2dbf-8f3d-4179-b755-7d1cfecbf14f.gif)
+    Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click.
 
 
 # CONFIGURATION:
