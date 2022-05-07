@@ -2,12 +2,16 @@
 PROJECT WEATHER APP 
 
 OPERATIONAL INSTRUCTIONS
+<<<<<<< HEAD
     Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click. 
 
     Search bar interactivity for location has been disabled for functional purposes. Please see BUGS below for more information. 
 
     <iframe src="https://giphy.com/embed/pZXV4dQnzFQshnmOON" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
 
+=======
+    Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click.
+>>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
 
 
 # CONFIGURATION:
@@ -51,7 +55,7 @@ NavButtons()
 
 WeatherBG()
 
-    Takes in data from the currentWeatherInfo function. It then takes the divA, divB, and divC containers with a get element by id and sets them to individual variables. A If conditional is this set to look for the current conditions and compare them to rain, overcast, partially cloudy, and clear. The backgounds of the individual div's is updated to reflect the current weather conditions.
+    Takes in data from the currentWeatherInfo function. Determining the current conditions it then reflects a background on the webpage to give a visual aspect to the current weather conditions being experienced for the area. 
 
 
 
