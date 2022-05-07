@@ -169,4 +169,43 @@ h1 {
     font-weight: bold;
     margin-top: -34px;
     
+<<<<<<< HEAD
 }
+=======
+}
+
+#a{
+    height: 100px;
+    width: auto;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+#b{
+    height: 100px;
+    width: auto;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+#c{
+    height: 100px;
+    width: auto;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+#d{
+    height: 100px;
+    width: auto;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+#e{
+    height: 100px;
+    width: auto;
+    text-align: left;
+    padding-bottom: 20px;
+}
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf

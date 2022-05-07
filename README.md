@@ -1,7 +1,7 @@
 # Phase1Project-
 PROJECT WEATHER APP 
 
-# OPERATIONAL INSTRUCTIONS
+OPERATIONAL INSTRUCTIONS
     Currently the operational instructions only consist of the hourly and five day navigational buttons. These buttons will allow the interactivity of the divB and divC containers replacing one another with a click. 
 
     Search bar interactivity for location has been disabled for functional purposes. Please see BUGS below for more information. 
@@ -33,8 +33,6 @@ Time()
 LocAndSearch()
 
     Takes in data from the currentWeatherInfo function. Then the address is splut into a string index of 2, where the first index (city's), 1st character is returned to uppercase and added back to the city. The temperature is then grabbed from data in celsius and appended to nav bar being converted  into farenheit. The city and state are also appended to the navbar.
-
-    Currently the Search function has been disabled and removed, please check bugs for more information.
 
 
 Hourly()
@@ -104,11 +102,6 @@ API weather information from Visual Crossing
 CurrentWeather()
 
     1. The time is off on the current weather. This is not because of a coding or clarical error. The issue comes from the API information being updated irreguarly. Time has been cross referenced to the api and the data on the page does match the API itself.
-
-LocAndSearch()
-
-    1. Currently the Search function has been disabled and removed from the page, as it is not currently operational. All code has been commented out for future use.
-
 
 FiveDay()
 

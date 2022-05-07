@@ -1,5 +1,8 @@
 const url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
 const urlParams = "?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json"
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,14 +18,22 @@ function currentWeatherInfo(searchParam) {
             let location = data.resolvedAddress.split(",")
             let newLocation = (location[0] + "," + location[1])
             let locationField = document.getElementById("location")
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
             locationField.innerText = ""
             locationField.append("Location: ", newLocation)
 
             let temp = data.currentConditions.temp
             let tempField = document.getElementById("temp")
             tempField.innerText = ""
+<<<<<<< HEAD
             tempField.append("Temperature: ", Math.round(temp * 9 / 5 + 32), " Degrees", " F")
+=======
+            tempField.append("Temperature: ", temp * 9 / 5 + 32, " Degrees", " F")
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
 
             let conditions = data.currentConditions.conditions
             let condField = document.getElementById("conditions")
@@ -96,11 +107,16 @@ function locationBar(data) {
     let temp = data.currentConditions.temp
     let locationField = document.getElementById("cityandstate")
     locationField.innerHTML = ""
+<<<<<<< HEAD
     locationField.append(" ", Math.round(temp * 9 / 5 + 32) + " F. | ", " ")
+=======
+    locationField.append(" ", temp * 9 / 5 + 32 + " F. | ", " ")
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
     locationField.append(city, ", ", state,)
     console.log(data)
 }
 
+<<<<<<< HEAD
 function searchBar() {
     let searchBar = document.getElementById("form")
 
@@ -113,6 +129,20 @@ function searchBar() {
 
     })
 
+=======
+    function searchBar() {
+    let searchBar = document.getElementById("form")
+
+    searchBar.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let search = e.target[0].value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+        e.target.reset()
+
+        currentWeatherInfo(search)
+      
+    })
+        
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
 };
 
 function hourly(data) {
@@ -151,6 +181,7 @@ function hourly(data) {
 }
 
 function fiveDay(data) {
+<<<<<<< HEAD
     let c = document.getElementById("containerC")
     let day = data.days
     console.log()
@@ -164,6 +195,50 @@ function fiveDay(data) {
             "\n", day[x].description,
         )
     }
+=======
+    let dayOne = data.days[0].datetime.split("-")
+    document.getElementById("dayA").innerText = ""
+    document.getElementById("dayA").append(dayOne[1] + "/" + dayOne[2])
+    document.getElementById("dayATemp").innerText =""
+    document.getElementById("dayATemp").append("Temperature: ", data.days[0].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayACond").innerText =""
+    document.getElementById("dayACond").append("Conditions: ", data.days[0].conditions)
+
+    let dayTwo = data.days[1].datetime.split("-")
+    document.getElementById("dayB").innerText = ""
+    document.getElementById("dayB").append(dayTwo[1] + "/" + dayTwo[2])
+    document.getElementById("dayBTemp").innerText =""
+    document.getElementById("dayBTemp").append("Temperature: ", data.days[1].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayBCond").innerText =""
+    document.getElementById("dayBCond").append("Conditions: ", data.days[1].conditions)
+
+    let dayThree = data.days[2].datetime.split("-")
+    document.getElementById("dayC").innerText = ""
+    document.getElementById("dayC").append(dayThree[1] + "/" + dayThree[2])
+    document.getElementById("dayCTemp").innerText =""
+    document.getElementById("dayCTemp").append("Temperature: ", data.days[2].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayCCond").innerText =""
+    document.getElementById("dayCCond").append("Conditions: ", data.days[2].conditions)
+
+    let dayFour = data.days[3].datetime.split("-")
+    document.getElementById("dayD").innerText = ""
+    document.getElementById("dayD").append(dayFour[1] + "/" + dayFour[2])
+    document.getElementById("dayDTemp").innerText =""
+    document.getElementById("dayDTemp").append("Temperature: ", data.days[3].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayDCond").innerText =""
+    document.getElementById("dayDCond").append("Conditions: ", data.days[3].conditions)
+
+    let dayFive = data.days[4].datetime.split("-")
+    document.getElementById("dayE").innerText = ""
+    document.getElementById("dayE").append(dayFive[1] + "/" + dayFive[2])
+    document.getElementById("dayETemp").innerText =""
+    document.getElementById("dayETemp").append("Temperature: ", data.days[4].temp * 9 / 5 + 32 + " F")
+    document.getElementById("dayECond").innerText =""
+    document.getElementById("dayECond").append("Conditions: ", data.days[4].conditions)
+
+
+
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
 }
 
 function navButtons() {
@@ -202,10 +277,22 @@ function weatherBG(data) {
     }
 
     else if (currentCondition != "rain" && currentCondition == "Overcast") {
+<<<<<<< HEAD
         document.body.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
     }
 
     else if (currentCondition != "rain" && currentCondition == "Clear") {
         document.body.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
+=======
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
+    }
+
+    else if (currentCondition != "rain" && currentCondition == "Clear") {
+        a.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
+        b.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
+        c.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
+>>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
     }
 }
