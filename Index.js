@@ -1,12 +1,4 @@
 const url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
 const urlParams = "?unitGroup=metric&key=D7EWQSWC4XASA23DCSMD9M4ZH&contentType=json"
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,168 +7,125 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function currentWeatherInfo(searchParam) {
-
+    debugger
+    
     fetch(url + searchParam + urlParams)
-        .then(response => response.json())
-        .then(data => {
-            let location = data.resolvedAddress.split(",")
-            let newLocation = (location[0] + "," + location[1])
-            let locationField = document.getElementById("location")
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
-            locationField.innerText = ""
-            locationField.append("Location: ", newLocation)
-
-            let temp = data.currentConditions.temp
-            let tempField = document.getElementById("temp")
-            tempField.innerText = ""
-<<<<<<< HEAD
-<<<<<<< HEAD
-            tempField.append("Temperature: ", Math.round(temp * 9 / 5 + 32), " Degrees", " F")
-=======
-            tempField.append("Temperature: ", temp * 9 / 5 + 32, " Degrees", " F")
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-            tempField.append("Temperature: ", Math.round(temp * 9 / 5 + 32), " Degrees", " F")
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
-
-            let conditions = data.currentConditions.conditions
-            let condField = document.getElementById("conditions")
-            condField.innerText = ""
-            condField.append("Condition: ", conditions)
-
-            let precipProb = data.currentConditions.precipprob
-            if (precipProb == null) {
-                precipProb = ("0%")
-            }
-
-            let preciProbField = document.getElementById("preciprob")
-            preciProbField.innerText = ""
-            preciProbField.append("Precipitation Probability: ", precipProb)
-
-            let precip = data.currentConditions.precip
-            let preciField = document.getElementById("preci")
-            preciField.innerText = ""
-            preciField.append("Precipitation: ", precip, " In")
-
-            let wind = data.currentConditions.windspeed
-            let windField = document.getElementById("wind")
-            windField.innerText = ""
-            windField.append("Wind Speed:", wind, " mph")
-
-            let gust = data.currentConditions.windgust
-            let gustField = document.getElementById("gust")
-            gustField.innerText = ""
-            gustField.append("Gust Speed: ", gust, " mph")
-
-
-            time(data)
-            locationBar(data, url)
-            searchBar()
-            fiveDay(data)
-            hourly(data)
-            weatherBG(data)
-        })
+    .then(response => response.json())
+    .then(appendWeather)
         .catch(error => alert("Please enter valid city and state"))
-};
+    };
+    
 
-function time(data) {
-    let date = data.days[0].datetime.split("-")
-    let year = date[0]
-    let month = date[1]
-    let day = date[2]
-    let time = data.currentConditions.datetime.split(":")
-    let hour = (time[0] % 12)
-    if (hour == 0) {
-        hour = 12
-    }
-    let minutes = time[1]
+function appendWeather(data){
+    let location = data.resolvedAddress.split(",")
+    let newLocation = (location[0] + "," + location[1])
+    let locationField = document.getElementById("location")
+    
+    locationField.innerText = ""
+    locationField.append("Location: ", newLocation)
 
-    let dateField = document.getElementById("date")
-    let timeField = document.getElementById("time")
-    dateField.innerText = ""
-    dateField.append("Date: " + month + "-" + day + "-" + year, " ")
-    timeField.innerText = ""
-    if (time > "11:59:59") {
-        timeField.append(hour, ":", minutes, " PM")
+    let temp = data.currentConditions.temp
+    let tempField = document.getElementById("temp")
+    tempField.innerText = ""
+    tempField.append("Temperature: ", Math.round(temp * 9 / 5 + 32), " Degrees", " F")
+    
+    let conditions = data.currentConditions.conditions
+    let condField = document.getElementById("conditions")
+    condField.innerText = ""
+    condField.append("Condition: ", conditions)
+    
+    let precipProb = data.currentConditions.precipprob
+    if (precipProb === null) {
+        precipProb = ("0%")
     }
-    else if (time < "11:59:59") {
-        timeField.append(hour, ":", minutes, "AM")
-    }
-};
+    
+    let preciProbField = document.getElementById("preciprob")
+    preciProbField.innerText = ""
+    preciProbField.append("Precipitation Probability: ", precipProb)
+    
+    let precip = data.currentConditions.precip
+    let preciField = document.getElementById("preci")
+    preciField.innerText = ""
+    preciField.append("Precipitation: ", precip, " In")
+    
+    let wind = data.currentConditions.windspeed
+    let windField = document.getElementById("wind")
+    windField.innerText = ""
+    windField.append("Wind Speed:", wind, " mph")
+    
+    let gust = data.currentConditions.windgust
+        let gustField = document.getElementById("gust")
+        gustField.innerText = ""
+        gustField.append("Gust Speed: ", gust, " mph")
+        
+        
+        time(data)
+        locationBar(data, url)
+        searchBar()
+        fiveDay(data)
+        hourly(data)
+        weatherBG(data)
+}
 
-function locationBar(data) {
-    let location = data.address.split(" ")
-    let city = location[0].charAt(0).toUpperCase() + location[0].slice(1)
+    function time(data) {
+        let date = data.days[0].datetime.split("-")
+        let year = date[0]
+        let month = date[1]
+        let day = date[2]
+        let time = data.currentConditions.datetime.split(":")
+        let hour = (time[0] % 12)
+        if (hour === 0) {
+            hour = 12
+        }
+        let minutes = time[1]
+        
+        let dateField = document.getElementById("date")
+        let timeField = document.getElementById("time")
+        dateField.innerText = ""
+        dateField.append("Date: " + month + "-" + day + "-" + year, " ")
+        timeField.innerText = ""
+        if (time > "11:59:59") {
+            timeField.append(hour, ":", minutes, " PM")
+        }
+        else if (time < "11:59:59") {
+            timeField.append(hour, ":", minutes, "AM")
+        }
+    };
+    
+    function locationBar(data) {
+        let location = data.address.split(" ")
+        let city = location[0].charAt(0).toUpperCase() + location[0].slice(1)
     let state = location[1]
     let temp = data.currentConditions.temp
     let locationField = document.getElementById("cityandstate")
     locationField.innerHTML = ""
-<<<<<<< HEAD
-<<<<<<< HEAD
     locationField.append(" ", Math.round(temp * 9 / 5 + 32) + " F. | ", " ")
-=======
-    locationField.append(" ", temp * 9 / 5 + 32 + " F. | ", " ")
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-    locationField.append(" ", Math.round(temp * 9 / 5 + 32) + " F. | ", " ")
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
     locationField.append(city, ", ", state,)
     console.log(data)
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 function searchBar() {
     let searchBar = document.getElementById("form")
-
+    
     searchBar.addEventListener('submit', (e) => {
         e.preventDefault()
         let search = e.target[0].value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
         e.target.reset()
-
-        currentWeatherInfo(search)
-
-    })
-
-=======
-    function searchBar() {
-=======
-function searchBar() {
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
-    let searchBar = document.getElementById("form")
-
-    searchBar.addEventListener('submit', (e) => {
-        e.preventDefault()
-        let search = e.target[0].value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-        e.target.reset()
-
-        currentWeatherInfo(search)
-
-    })
-<<<<<<< HEAD
         
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
+        currentWeatherInfo(search)
+        
+    })
+    
 };
 
 function hourly(data) {
-    let container = document.getElementById("containerB")
-
+    
+    const container = document.getElementById("containerB")
     let time = data.currentConditions.datetime.split(":")
     let hour = (time[0])
     let today = data.days[0]
     let hours = today.hours
-
+    
     if (hour) {
         for (let x = 0; x < hours.length; x++) {
             let newHour = hours[x]
@@ -205,10 +154,7 @@ function hourly(data) {
 }
 
 function fiveDay(data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
+    
     let c = document.getElementById("containerC")
     let day = data.days
     console.log()
@@ -222,59 +168,12 @@ function fiveDay(data) {
             "\n", day[x].description,
         )
     }
-<<<<<<< HEAD
-=======
-    let dayOne = data.days[0].datetime.split("-")
-    document.getElementById("dayA").innerText = ""
-    document.getElementById("dayA").append(dayOne[1] + "/" + dayOne[2])
-    document.getElementById("dayATemp").innerText =""
-    document.getElementById("dayATemp").append("Temperature: ", data.days[0].temp * 9 / 5 + 32 + " F")
-    document.getElementById("dayACond").innerText =""
-    document.getElementById("dayACond").append("Conditions: ", data.days[0].conditions)
-
-    let dayTwo = data.days[1].datetime.split("-")
-    document.getElementById("dayB").innerText = ""
-    document.getElementById("dayB").append(dayTwo[1] + "/" + dayTwo[2])
-    document.getElementById("dayBTemp").innerText =""
-    document.getElementById("dayBTemp").append("Temperature: ", data.days[1].temp * 9 / 5 + 32 + " F")
-    document.getElementById("dayBCond").innerText =""
-    document.getElementById("dayBCond").append("Conditions: ", data.days[1].conditions)
-
-    let dayThree = data.days[2].datetime.split("-")
-    document.getElementById("dayC").innerText = ""
-    document.getElementById("dayC").append(dayThree[1] + "/" + dayThree[2])
-    document.getElementById("dayCTemp").innerText =""
-    document.getElementById("dayCTemp").append("Temperature: ", data.days[2].temp * 9 / 5 + 32 + " F")
-    document.getElementById("dayCCond").innerText =""
-    document.getElementById("dayCCond").append("Conditions: ", data.days[2].conditions)
-
-    let dayFour = data.days[3].datetime.split("-")
-    document.getElementById("dayD").innerText = ""
-    document.getElementById("dayD").append(dayFour[1] + "/" + dayFour[2])
-    document.getElementById("dayDTemp").innerText =""
-    document.getElementById("dayDTemp").append("Temperature: ", data.days[3].temp * 9 / 5 + 32 + " F")
-    document.getElementById("dayDCond").innerText =""
-    document.getElementById("dayDCond").append("Conditions: ", data.days[3].conditions)
-
-    let dayFive = data.days[4].datetime.split("-")
-    document.getElementById("dayE").innerText = ""
-    document.getElementById("dayE").append(dayFive[1] + "/" + dayFive[2])
-    document.getElementById("dayETemp").innerText =""
-    document.getElementById("dayETemp").append("Temperature: ", data.days[4].temp * 9 / 5 + 32 + " F")
-    document.getElementById("dayECond").innerText =""
-    document.getElementById("dayECond").append("Conditions: ", data.days[4].conditions)
-
-
-
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
 }
 
 function navButtons() {
+    const container = document.getElementById("containerB")
     let hourlyButton = document.getElementById("hourly")
     let weeklyButton = document.getElementById("fiveDay")
-    let container = document.getElementById("containerB")
     let container1 = document.getElementById("containerC")
     let title = document.getElementById("forecast")
     let title1 = document.getElementById("weeklyForecast")
@@ -298,39 +197,19 @@ function navButtons() {
 
 function weatherBG(data) {
     let currentCondition = data.currentConditions.conditions
-    if (currentCondition == "Rain") {
+    if (currentCondition === "Rain") {
         document.body.style.backgroundImage = "url('https://media1.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif?cid=ecf05e471vbipwsodtlvxejxnbteynw6twxn5abw348fi79q&rid=giphy.gif&ct=g')"
     }
 
-    else if (currentCondition != "Rain" && currentCondition == "Partially cloudy") {
+    else if (currentCondition === "Partially cloudy") {
         document.body.style.backgroundImage = "url('https://media3.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif?cid=ecf05e47y4x15tyqu0acs13tnn77e0w5kxag93xuch4bki2k&rid=giphy.gif&ct=g')"
     }
 
-    else if (currentCondition != "rain" && currentCondition == "Overcast") {
-<<<<<<< HEAD
-<<<<<<< HEAD
+    else if (currentCondition === "Overcast") {
         document.body.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
     }
 
-    else if (currentCondition != "rain" && currentCondition == "Clear") {
+    else { 
         document.body.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
-=======
-        a.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
-        b.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
-        c.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
-    }
-
-    else if (currentCondition != "rain" && currentCondition == "Clear") {
-        a.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
-        b.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
-        c.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-        document.body.style.backgroundImage = "url('https://media1.giphy.com/media/yB3gwsCaymSglI1Jqt/giphy.gif?cid=ecf05e47u26rposlcao2zh6lj6cvwokopew45oco6hs65cxq&rid=giphy.gif&ct=g')"
-    }
-
-    else if (currentCondition != "rain" && currentCondition == "Clear") {
-        document.body.style.backgroundImage = "url('https://media1.giphy.com/media/jk9L41aToGZQA/giphy.gif?cid=ecf05e474h834vuneklm4mbnh7gwvw984q39s412yid4pu02&rid=giphy.gif&ct=g')"
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
     }
 }

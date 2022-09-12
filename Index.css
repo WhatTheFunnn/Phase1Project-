@@ -168,18 +168,16 @@ h1 {
     text-indent: -10px;
     font-weight: bold;
     margin-top: -34px;
+}
     
-<<<<<<< HEAD
-}
-=======
-}
-
 #a{
     height: 100px;
     width: auto;
     text-align: left;
     padding-bottom: 20px;
+
 }
+
 
 #b{
     height: 100px;
@@ -208,8 +206,3 @@ h1 {
     text-align: left;
     padding-bottom: 20px;
 }
-<<<<<<< HEAD
->>>>>>> 107297396c6a1f07c5e422e183f42d7ebb8473cf
-=======
-
->>>>>>> 209ecaec83574df56a6a5ca3b739d55e0946f0dd
